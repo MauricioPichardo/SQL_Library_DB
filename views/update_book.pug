@@ -1,0 +1,28 @@
+extends layout.pug
+
+block content
+  h2= title
+  include error
+  
+  form(action=`/${book.id}`, method="Post")
+    p
+      label(for="title")  Title:
+      input(type="text", name="title" value=book.title)
+    p
+      label(for="author") Author:
+      input(type="text", name="author" value=book.author)
+    p
+      label(for="genre")  Genre:
+      input(type="text", name="genre" value=book.genre)
+    p
+      label(for="year")   Year:
+      input(type="integer", style='margin-left: 7px;' name="year" value=book.year)
+    br
+    input(type="submit" value="Update Book")
+  p
+    input(type="submit" value="Cancel" onClick="window.location.href='/'")
+  p  
+  form(action=`/${book.id}/delete`, method="Post")
+    input(type="submit" value="Delete Book" )
+
+    

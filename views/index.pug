@@ -1,0 +1,28 @@
+extends layout.pug
+
+block content 
+
+     div.head
+         p
+             a.button(href='/new' class="button") Add New Book
+     h1  All The Books
+     table
+        th Title
+        th Author
+        th Genre
+        th Year
+        each book in library
+           tr
+              td
+                a(href= '/' + book.id)=book.title
+              td=book.author
+              td=book.genre
+              td=book.year
+
+
+
+
+     div.links
+
+  
+    
