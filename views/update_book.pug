@@ -4,7 +4,7 @@ block content
   h2= title
   include error
   
-  form(action=`/${book.id}`, method="Post")
+  form(action=`/books/${book.id}`, method="Post")
     p
       label(for="title")  Title:
       input(type="text", name="title" value=book.title)
@@ -20,9 +20,9 @@ block content
     br
     input(type="submit" value="Update Book")
   p
-    input(type="submit" value="Cancel" onClick="window.location.href='/'")
+    input(type="submit" value="Cancel" onClick="window.location.href='/books'")
   p  
-  form(action=`/${book.id}/delete`, method="Post")
+  form(action=`${book.id}/delete`, method="Post")
     input(type="submit" value="Delete Book" )
 
     
