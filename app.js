@@ -27,23 +27,22 @@ app.use(express.static(path.join(__dirname, 'public')));
   }
 })();
 
+
 app.use('/', routes);
-// catch 404 and forward to error handler
-app.use( (req, res, next) => {
-  next(createError(404));
+
+//Global Handler
+app.use((req, res) => {
+  res.locals.title = "Page Not Found";
+  res.status(404).render("page_not_found");
 });
 
 // error handler
 app.use((err, req, res, next) => {
-    res.locals.error = err;
-    console.log('Error status:', err.status);
-    res.status(err.status || 500);
-    if(err.status === 404){
-        res.render('error');
-    } else {
-        res.render('error');
-    }
+  res.locals.error= err;
+  res.status(err.status || 500);
+  res.render("server_issue", err);
 });
+
 
 
 app.listen(3000), () => console.log('Api Listening on port 3000!')
